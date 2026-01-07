@@ -156,40 +156,68 @@ function run() {
 }
 
 
-document.getElementById('up').addEventListener('mousedown', function() {
-    up = true 
-});
+// Helper function to add both mouse and touch events
+function addControlEvent(id, stateVar) {
+    const element = document.getElementById(id);
 
-document.getElementById('up').addEventListener('mouseup', function() {
-    up = false
-});
+    // Mouse events
+    element.addEventListener('mousedown', () => { window[stateVar] = true; });
+    element.addEventListener('mouseup', () => { window[stateVar] = false; });
+    element.addEventListener('mouseleave', () => { window[stateVar] = false; }); // stop when cursor leaves
+
+    // Touch events (mobile)
+    element.addEventListener('touchstart', (e) => { 
+        e.preventDefault(); // prevent scrolling
+        window[stateVar] = true; 
+    });
+    element.addEventListener('touchend', () => { window[stateVar] = false; });
+    element.addEventListener('touchcancel', () => { window[stateVar] = false; });
+}
+
+// Define global variables
+let up = false, down = false, left = false, right = false;
+
+// Add events for each control
+addControlEvent('up', 'up');
+addControlEvent('down', 'down');
+addControlEvent('left', 'left');
+addControlEvent('right', 'right');
 
 
-document.getElementById('down').addEventListener('mousedown', function() {
-    down = true 
-});
+// document.getElementById('up').addEventListener('mousedown', function() {
+//     up = true 
+// });
 
-document.getElementById('down').addEventListener('mouseup', function() {
-    down = false
-});
-
-
-document.getElementById('right').addEventListener('mousedown', function() {
-    right = true 
-});
-
-document.getElementById('right').addEventListener('mouseup', function() {
-    right = false
-});
+// document.getElementById('up').addEventListener('mouseup', function() {
+//     up = false
+// });
 
 
-document.getElementById('left').addEventListener('mousedown', function() {
-    left = true 
-});
+// document.getElementById('down').addEventListener('mousedown', function() {
+//     down = true 
+// });
 
-document.getElementById('left').addEventListener('mouseup', function() {
-    left = false
-});
+// document.getElementById('down').addEventListener('mouseup', function() {
+//     down = false
+// });
+
+
+// document.getElementById('right').addEventListener('mousedown', function() {
+//     right = true 
+// });
+
+// document.getElementById('right').addEventListener('mouseup', function() {
+//     right = false
+// });
+
+
+// document.getElementById('left').addEventListener('mousedown', function() {
+//     left = true 
+// });
+
+// document.getElementById('left').addEventListener('mouseup', function() {
+//     left = false
+// });
 
 document.addEventListener('keydown', function(event) {
 
