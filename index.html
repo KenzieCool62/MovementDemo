@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title> Movement Demo </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <script src="scripts.js" defer></script>
+    <body>
+        <header>
+            <h1 style="font-weight: normal;"> Movement Demo </h1>
+        </header>
+        <section>
+            <canvas id="gameCanvas" style="width: 400px; height: 400px; background-color: rgb(255, 255, 255);"></canvas>
+            <br>
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <button onclick="move('up')" id="up" class="moveBtn"> ^ </button>
+                <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+                    <button onclick="move('left')" id="left" class="moveBtn"> < </button>
+                    <button onclick="move('down')" id="down" class="moveBtn"> v </button>
+                    <button onclick="move('right')" id="right" class="moveBtn"> > </button>
+                </div>
+                <br>
+                <div>
+                    <label id="timeLabel">Time: 0s</label><br>
+                    <label id="topLabel">Highest Time: 0s</label><br>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
