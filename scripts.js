@@ -174,8 +174,6 @@ function addControlEvent(id, stateVar) {
     element.addEventListener('touchcancel', () => { window[stateVar] = false; });
 }
 
-// Define global variables
-let up = false, down = false, left = false, right = false;
 
 // Add events for each control
 addControlEvent('up', 'up');
